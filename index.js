@@ -98,7 +98,7 @@ function creatButton(value) {
     remove.textContent = 'Remove'
     remove.id = value
     remove.className = 'Button'
-    remove.style.width = '100px'
+    remove.style.width = '80px'
     remove.style.height = '30px'
     remove.style.margin = '5%'
     remove.addEventListener('click', deletar)
