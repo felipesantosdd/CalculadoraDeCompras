@@ -123,11 +123,11 @@ function deletar(Event) {
     listaProdutos = newLista
 
     creatItem()
-    Total(value)
+    Total()
 }
 
-function Total(value) {
-    let final0 = value
+function Total() {
+    let final0 = 0
     for (let i = 0; i < listaProdutos.length; i++) {
         final0 += Number(listaProdutos[i].preco) * Number(listaProdutos[i].amount)
     }
