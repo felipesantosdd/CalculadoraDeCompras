@@ -10,10 +10,6 @@ contentPreco.appendChild(PrecoTotal)
 PrecoTotal.id = 'precoTotal'
 PrecoTotal.innerText = 00.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
-
-
-
-
 // Botão Adicioanar
 let btn = document.getElementById('ButtonAdd')
 btn.addEventListener('click', validation)
@@ -62,13 +58,10 @@ function creatItem() {
         tabela.append(item)
         item.textContent = listaProdutos[i].nome.toUpperCase()
 
-
-
         const preco = creatPreco(i)
         const amount = creatAmount(i)
         const remove = creatButton(i)
         const total = Total(i)
-
 
         tabela.append(preco)
         tabela.append(amount)
@@ -130,18 +123,15 @@ function deletar(Event) {
     listaProdutos = newLista
 
     creatItem()
-
+    Total(value)
 }
 
-function Total() {
-    let final0 = 0
+function Total(value) {
+    let final0 = value
     for (let i = 0; i < listaProdutos.length; i++) {
         final0 += Number(listaProdutos[i].preco) * Number(listaProdutos[i].amount)
-
     }
     PrecoTotal.innerText = final0.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-
     return ''
-
 }
 
