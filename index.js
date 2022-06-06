@@ -14,6 +14,7 @@ PrecoTotal.innerText = 00.toLocaleString('pt-BR', { style: 'currency', currency:
 let btn = document.getElementById('ButtonAdd')
 btn.addEventListener('click', validation)
 
+
 function add() {
     const item =
     {
@@ -50,6 +51,7 @@ function validation() {
 
 }
 
+
 function creatItem() {
     tabela.innerHTML = ''
     for (let i = 0; i < listaProdutos.length; i++) {
@@ -61,12 +63,11 @@ function creatItem() {
         const preco = creatPreco(i)
         const amount = creatAmount(i)
         const remove = creatButton(i)
-        const total = Total(i)
+        Total(i)
 
         tabela.append(preco)
         tabela.append(amount)
         tabela.append(remove)
-        tabela.append(total)
 
     }
 
@@ -88,14 +89,13 @@ function creatAmount(value) {
 
 function creatButton(value) {
     const remove = document.createElement('button')
-    remove.textContent = 'Remove'
+    remove.innerText = 'Remove'
     remove.id = value
     remove.className = 'Button'
     remove.style.width = '80px'
     remove.style.height = '30px'
     remove.style.margin = '5%'
     remove.addEventListener('click', deletar)
-
     return remove
 }
 
@@ -115,13 +115,12 @@ function newId() {
     return listaProdutos
 }
 
-function deletar(Event) {
-    let id = (Event.target.id)
-    let newLista = listaProdutos
-    listaProdutos = ''
-    newLista.splice(id, 1)
-    listaProdutos = newLista
+function deletar(event) {
+    let id = Number(event.target.id)
 
+    listaProdutos.splice(id,1)
+
+    console.log(id);
     creatItem()
     Total()
 }
@@ -132,6 +131,5 @@ function Total() {
         final0 += Number(listaProdutos[i].preco) * Number(listaProdutos[i].amount)
     }
     PrecoTotal.innerText = final0.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-    return ''
 }
 
